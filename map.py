@@ -28,12 +28,12 @@ mouseDown = False
 white = (255, 255, 255)
 green = (0, 255, 0)
 blue = (0, 0, 128)
-green1 = (100, 230, 100)
-green2 = (200, 250, 200)
-yellow1 = (245, 214, 36)
-yellow2 = (253, 216, 1)
-red1 = (255, 0, 0)
-red2 = (200, 0, 0)
+green1 = (39, 154, 27)
+green2 = (54, 178, 41)
+yellow1 = (250, 228, 39)
+yellow2 = (254, 241, 132)
+red1 = (213, 6, 6)
+red2 = (244, 45, 45)
 
 #game state variable
 state = 1 #1 is menu, 2 is playing, 3 is credits, 4 is quit, 5 is death screen
@@ -165,7 +165,7 @@ while not gameover:#GAMELOOP####################################################
                 quitGame = False
 
     #PHYSICS--------------------------------------------------------------------------------------------------------------------------------
-    print(mousePos)
+    #print(mousePos)
     if mapNum == 1:
         p1.move(keys, map)
     elif mapNum == 2:
