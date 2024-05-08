@@ -83,6 +83,54 @@ class player:
 
         if map[int((self.ypos+ 30 + 5) / 50 )][int((self.xpos ) / 50)] == 2:
             self.ypos-=3
+
+        if map[int((self.ypos- 10) / 50 )][int((self.xpos - 10) / 50)] == 3:
+            self.xpos+=3
+
+        if map[int((self.ypos-10) / 50 )][int((self.xpos + 30 + 5) / 50)] == 3:
+            self.xpos-=3
+
+        if map[int((self.ypos -5) / 50 )][int((self.xpos) / 50)] == 3:
+            self.ypos+=3
+
+        if map[int((self.ypos+ 30 + 5) / 50 )][int((self.xpos ) / 50)] == 3:
+            self.ypos-=3
+
+        if map[int((self.ypos- 10) / 50 )][int((self.xpos - 10) / 50)] == 4:
+            self.xpos+=3
+
+        if map[int((self.ypos-10) / 50 )][int((self.xpos + 30 + 5) / 50)] == 4:
+            self.xpos-=3
+
+        if map[int((self.ypos -5) / 50 )][int((self.xpos) / 50)] == 4:
+            self.ypos+=3
+
+        if map[int((self.ypos+ 30 + 5) / 50 )][int((self.xpos ) / 50)] == 4:
+            self.ypos-=3
+
+        if map[int((self.ypos- 10) / 50 )][int((self.xpos - 10) / 50)] == 6:
+            self.xpos+=3
+
+        if map[int((self.ypos-10) / 50 )][int((self.xpos + 30 + 5) / 50)] == 6:
+            self.xpos-=3
+
+        if map[int((self.ypos -5) / 50 )][int((self.xpos) / 50)] == 6:
+            self.ypos+=3
+
+        if map[int((self.ypos+ 30 + 5) / 50 )][int((self.xpos ) / 50)] == 6:
+            self.ypos-=3
+
+        if map[int((self.ypos- 10) / 50 )][int((self.xpos - 10) / 50)] == 7:
+            self.xpos+=3
+
+        if map[int((self.ypos-10) / 50 )][int((self.xpos + 30 + 5) / 50)] == 7:
+            self.xpos-=3
+
+        if map[int((self.ypos -5) / 50 )][int((self.xpos) / 50)] == 7:
+            self.ypos+=3
+
+        if map[int((self.ypos+ 30 + 5) / 50 )][int((self.xpos ) / 50)] == 7:
+            self.ypos-=3
  
  
         #update posistion
