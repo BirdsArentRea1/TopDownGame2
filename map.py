@@ -1,6 +1,7 @@
 import pygame
 from player2 import player
 from fireball2 import fireball
+from sword import Sword
 from enemy2 import enemy
 pygame.init()
 pygame.display.set_caption("top down game")
@@ -11,9 +12,9 @@ gameover = False
 
 font = pygame.font.Font('freesansbold.ttf', 32)
 
-die = pygame.mixer.Sound('mp3/LegoYodaDeath.mp3')
-boom = pygame.mixer.Sound('mp3/VineBoom.mp3')
-warp = pygame.mixer.Sound("mp3/smb_pipe.wav")
+#die = pygame.mixer.Sound('LegoYodaDeath.mp3')
+#boom = pygame.mixer.Sound('VineBoom.mp3')
+#warp = pygame.mixer.Sound("smb_pipe.wav")
 
 xpos= 500 
 ypos = 200 
@@ -54,6 +55,7 @@ ticker = 0
 p1 = player()
 e1 = enemy()
 ball = fireball()
+andrew = Sword(p1.xpos, p1.ypos)
 
 keys = [False, False, False,False,False]
 
@@ -155,9 +157,11 @@ while not gameover:#GAMELOOP####################################################
         #keeps track of mouse position
         if event.type == pygame.MOUSEMOTION:
             mousePos = event.pos
+            
         #keeps track of mouse button
         if event.type == pygame.MOUSEBUTTONDOWN:
             mouseDown = True
+            print("mouse button down detected!")
         if event.type == pygame.MOUSEBUTTONUP:
             mouseDown = False
         
@@ -171,6 +175,9 @@ while not gameover:#GAMELOOP####################################################
 
     #PHYSICS--------------------------------------------------------------------------------------------------------------------------------
     #print(mousePos)
+    if state == 2 and mouseDown == True:
+        #print("hello!")
+        andrew.slash(ticker)
     if mapNum == 1:
         p1.move(keys, map)
     elif mapNum == 2:
@@ -179,7 +186,7 @@ while not gameover:#GAMELOOP####################################################
         p1.move(keys, map3)
     if mapNum == 1 or 2 or 3:
         if e1.isAlive == True:
-            e1.move(map, ticker, p1.xpos, p1.ypos)
+            #e1.move(map, ticker, p1.xpos, p1.ypos)
             e1.die(ball.xpos, ball.ypos)
             p1.ouch(e1.xpos, e1.ypos)
 
@@ -256,6 +263,8 @@ while not gameover:#GAMELOOP####################################################
     if state == 1:
         screen.fill((70,70,255))
         
+
+        
         if button1 == False:
             pygame.draw.rect(screen, (green1), (100, 400, 200, 150))
             screen.blit(text1, (160,450))
@@ -277,6 +286,7 @@ while not gameover:#GAMELOOP####################################################
         else:
             pygame.draw.rect(screen, (red2), (700, 400, 200, 150))
             screen.blit(text2, (765,450))
+
 
        
     #game state-------------------------------
