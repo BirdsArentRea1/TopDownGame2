@@ -11,7 +11,7 @@ DOWN = 3
 class enemy:
     def __init__(self):
         self.xpos = 500
-        self.ypos = 200
+        self.ypos = 500
         self.isAlive = True
         self.direction = RIGHT
 
@@ -73,10 +73,15 @@ class enemy:
             self.xpos -= 1
 
 #die
-    def die(self, ballx, bally):
+    def die(self, ballx, bally, SwordHit):
         if math.sqrt((self.xpos-ballx)**2 + (self.ypos-bally)**2) <= 20:
+            self.isAlive = False 
+            print("enemy killed with fireball")
+        elif SwordHit == True:
+            print("enemy killed with sword")
             self.isAlive = False
-            print("enemy killed")
+        
+    
 
     def draw(self,screen):
         if self.isAlive == True:
