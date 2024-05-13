@@ -161,7 +161,7 @@ while not gameover:#GAMELOOP####################################################
         #keeps track of mouse button
         if event.type == pygame.MOUSEBUTTONDOWN:
             mouseDown = True
-            print("mouse button down detected!")
+            #print("mouse button down detected!")
         if event.type == pygame.MOUSEBUTTONUP:
             mouseDown = False
         
@@ -172,6 +172,7 @@ while not gameover:#GAMELOOP####################################################
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_q:
                 quitGame = False
+
 
     #PHYSICS--------------------------------------------------------------------------------------------------------------------------------
     #print(mousePos)
@@ -186,9 +187,10 @@ while not gameover:#GAMELOOP####################################################
         p1.move(keys, map3)
     if mapNum == 1 or 2 or 3:
         if e1.isAlive == True:
-            e1.move(map, ticker, p1.xpos, p1.ypos)
-            e1.die(ball.xpos, ball.ypos)
+             #e1.move(map, ticker, p1.xpos, p1.ypos)
+            e1.die(ball.xpos, ball.ypos, andrew.collide(p1.xpos, p1.ypos, p1.direction, e1.xpos, e1.ypos, ticker))
             p1.ouch(e1.xpos, e1.ypos)
+
 
     #if e1.die == True:
         #pygame.mixer.Sound.play(boom)
@@ -342,6 +344,7 @@ while not gameover:#GAMELOOP####################################################
         e1.draw(screen)
         if ball.isAlive == True:
             ball.draw(screen)
+        andrew.draw(screen, p1.xpos, p1.ypos, p1.direction, ticker)
         
          #health bar
         pygame.draw.rect(screen, (255, 255, 255), (750, 5, 200, 30))
