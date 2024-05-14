@@ -1,8 +1,10 @@
 import pygame
 from player2 import player
+from item import item
 from fireball2 import fireball
 from sword import Sword
 from enemy2 import enemy
+import math
 pygame.init()
 pygame.display.set_caption("top down game")
 screen = pygame.display.set_mode((1000, 800))
@@ -52,10 +54,15 @@ SPACE = 4
 W = 5
 ticker = 0
 
+def dist(x1, y1, x2, y2):
+    return math.sqrt((x1-x2)**2 + (y1-y2)**2) <= 50
+        
+
 p1 = player()
 e1 = enemy()
 ball = fireball()
 andrew = Sword(p1.xpos, p1.ypos)
+items = [item(100, 100, 'potion'), item(200, 200, 'ring')]
 
 keys = [False, False, False,False,False]
 
@@ -226,6 +233,11 @@ while not gameover:#GAMELOOP####################################################
     if keys[SPACE] == True:
             ball.shoot(p1.xpos, p1.ypos, p1.direction)
 
+    #collect items
+    for i in items:
+        if i.collected == False and dist(p1.xpos, p1.ypos, i.x, i.y)<30:
+            p1.collect_item(i)
+
     #state 1: menu state!------------------------------
     if state == 1 and mousePos[0]>100 and mousePos[0]<300 and mousePos[1]>400 and mousePos[1]<550:
         button1 = True
@@ -264,8 +276,9 @@ while not gameover:#GAMELOOP####################################################
 
     if state == 1:
         screen.fill((70,70,255))
-        
 
+    for i in items:
+        i.draw(screen)        
         
         if button1 == False:
             pygame.draw.rect(screen, (green1), (100, 400, 200, 150))
@@ -345,6 +358,9 @@ while not gameover:#GAMELOOP####################################################
         if ball.isAlive == True:
             ball.draw(screen)
         andrew.draw(screen, p1.xpos, p1.ypos, p1.direction, ticker)
+        
+        for i in items:
+            i.draw(screen)
         
          #health bar
         pygame.draw.rect(screen, (255, 255, 255), (750, 5, 200, 30))
