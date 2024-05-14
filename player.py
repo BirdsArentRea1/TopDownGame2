@@ -26,12 +26,17 @@ class player:
         self.RowNum = 2 
         self.frameNum = 0
         self.ticker = 0
+        self.inventory = []
 
 #player take damage/die
     def ouch(self, enemyx, enemyy):
         if math.sqrt((self.xpos-enemyx)**2 + (self.ypos-enemyy)**2) <= 20:
             self.health -= 1
             print(self.health)
+
+    def collect_item(self, item):
+        item.collect()
+        self.inventory.append(item)
             
 
     def draw(self,screen):
@@ -42,7 +47,7 @@ class player:
 
     def move(self, keys, map):
 
-        #movement algorithm--------------------------
+        #movement algorithm------------------------------------------------------------------------------------------------------------------------
         if keys[LEFT] == True:
             self.vx = -3
             self.RowNum = 0
@@ -71,7 +76,7 @@ class player:
         else:
             self.vy = 0
 
-        #collision------------------------------
+        #collision----------------------------------------------------------------------------------------------------------------------------
         if map[int((self.ypos- 10) / 50 )][int((self.xpos - 10) / 50)] == 2:
             self.xpos+=3
 
