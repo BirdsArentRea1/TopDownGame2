@@ -43,6 +43,14 @@ class player:
         pygame.draw.rect(screen, (255, 0, 255), (self.xpos, self.ypos, 30, 30))
         screen.blit(wizard, (self.xpos, self.ypos), (0,self.RowNum*self.frameHeight,100,100))
         #screen.blit(wizard, (self.xpos, self.ypos), (self.frameWidth, self.RowNum*self.frameHeight, self.frameWidth, self.frameHeight)) 
+        
+        for i in range(2):
+            pygame.draw.rect(screen, (0,0,0), (200 + 50*i, 750, 50, 50))
+            pygame.draw.rect(screen, (255, 255, 255), (200 + 50*i, 750, 50, 50), 2)
+
+        for item in self.inventory:
+            item.draw(screen)
+            
 
 
     def move(self, keys, map):
