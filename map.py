@@ -55,14 +55,14 @@ W = 5
 ticker = 0
 
 def dist(x1, y1, x2, y2):
-    return math.sqrt((x1-x2)**2 + (y1-y2)**2) <= 50
+    return math.sqrt((x1-x2)**2 + (y1-y2)**2)
         
 
 p1 = player()
 e1 = enemy()
 ball = fireball()
 andrew = Sword(p1.xpos, p1.ypos)
-items = [item(100, 100, 'potion'), item(200, 200, 'ring')]
+items = [item(100, 400, 'potion'), item(200, 400, 'ring')]
 
 keys = [False, False, False,False,False]
 
@@ -235,8 +235,14 @@ while not gameover:#GAMELOOP####################################################
 
     #collect items
     for i in items:
+        #print(dist(p1.xpos, p1.ypos, i.x, i.y))
         if i.collected == False and dist(p1.xpos, p1.ypos, i.x, i.y)<30:
             p1.collect_item(i)
+            for j in range (len(items)):
+                if items[j].type == "potion" and items[j].collected == True:
+                    print("potion collected")
+                if items[j].type == "ring" and items[j].collected == True:
+                    print("ring collected")
 
     #state 1: menu state!------------------------------
     if state == 1 and mousePos[0]>100 and mousePos[0]<300 and mousePos[1]>400 and mousePos[1]<550:
