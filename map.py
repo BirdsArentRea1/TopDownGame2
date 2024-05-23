@@ -271,7 +271,7 @@ while not gameover:#GAMELOOP####################################################
                 if items[j].type == "potion" and items[j].collected == True:
                     print("potion collected")
                 if items[j].type == "ring" and items[j].collected == True:
-                    print("ring collected")
+                    print("key collected")
 
     #state 1: menu state!------------------------------
     if state == 1 and mousePos[0]>100 and mousePos[0]<300 and mousePos[1]>400 and mousePos[1]<550:
